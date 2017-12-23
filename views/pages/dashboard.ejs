@@ -1,0 +1,58 @@
+﻿<div id="wrapper">
+  <%- partial('./../partials/header.ejs') %>
+    <!-- /. NAV TOP  -->
+    <%- partial('./../partials/sidebar.ejs') %>
+      <!-- /. NAV SIDE  -->
+      <div id="page-wrapper">
+        <table class="table table-striped dataTable"  cellspacing="0" width="100%">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>name</th>
+              <th>phone</th>
+              <th>email</th>
+              <th>Hno.</th>
+              <th>street</th>
+              <th>Landmark</th>
+              <th>Service Name</th>
+              <th>CreatedAt</th>           
+            </tr>
+          </thead>
+          <tfoot>
+              <tr>
+                  <th>#</th>
+                  <th>name</th>
+                  <th>phone</th>
+                  <th>email</th>
+                  <th>Hno.</th>
+                  <th>street</th>
+                  <th>near</th>
+                  <th>Service Name</th>          
+                  <th>CreatedAt</th>  
+              </tr>
+          </tfoot>
+          <tbody>
+            <% for (var i = 0; i < all_users.length; i++) { %>
+              <tr>
+                <td><%=all_users[i].id %></td>                  
+                <td><%=all_users[i].name %></td>
+                <td><%=all_users[i].phone %></td>
+                <td><%=all_users[i].email %></td>
+                <td><%=all_users[i].house_num %></td>
+                <td><%=all_users[i].street %></td>
+                <td><%=all_users[i].landmark %></td>  
+                <% if(all_users[i].services && all_users[i].services.length > 0 ) {%>
+                  <td><%=all_users[i].services[0].name %></td>
+                <% } else { %>
+                  <td>none</td>                  
+                <% } %>
+                <td>
+                  <%= moment(all_users[i].createdAt).format("LLLL") %>
+                </td>                
+              </tr>
+            <%}%>
+          </tbody>
+        </table>
+      </div>
+      <!-- /. PAGE WRAPPER  -->
+</div>
