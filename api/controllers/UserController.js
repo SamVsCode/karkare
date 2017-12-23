@@ -7,6 +7,7 @@
 
 module.exports = {
     create: function (req, res) {
+        console.log(req.body);
         (async function () {
             if (
                 (req.body.name !== undefined && req.body.name !== "") &&
@@ -28,8 +29,8 @@ module.exports = {
                             userService = await UserService.create({
                                 customer: newUser.id,
                                 service: req.body.serviceid,
-                                car_type: req.body.cartype || null,
-                                coating_size: req.body.coating_size || null,
+                                car_type: req.body.cartype || 0,
+                                coating_size: req.body.coating_size || 0,
                                 appt_date: req.body.apptdate,
                                 appt_status: 1
                             }).fetch();

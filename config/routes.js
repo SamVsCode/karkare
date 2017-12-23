@@ -63,6 +63,14 @@ module.exports.routes = {
   'get /user/:id':{
     controller: 'user',
     action: 'findOne'
+  },
+  'get /appointment/service/:id': {
+    controller: 'admin',
+    action: 'showService'
+  },
+  'get /appointment/product/:id': {
+    controller: 'admin',
+    action: 'showProduct'
   }
   /***************************************************************************
   *                                                                          *

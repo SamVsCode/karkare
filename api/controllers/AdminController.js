@@ -7,17 +7,44 @@
 const moment = require('moment');
 module.exports = {
     dashboard: function(req,res){
-        User.find().populate('services').then((data)=>{
-            if(!data){
-                return res.notFound();
-            }else{
-                console.log(data);
-                return res.view('pages/dashboard', {all_users: data, moment: moment});
+        (async function(){
+            try{
+                var populatedData = await UserService
+                .find()
+                .populate("customer")
+                .populate("service")
+                .populate("product")
+                .populate("appt_status");
+                if(!populatedData) return res.notFound();
+                return res.view('pages/dashboard', {all_users: populatedData, moment: moment});
+            }catch(err){
+                console.log(err);
+                return res.serverError(err);
             }
-        }).catch((err)=>{
-            console.log(err);
-            res.serverError(err);
-        });
+        }());
+    },
+    showService: function(req,res){
+        (async function(){
+            try{
+                var serviceData = await UserService
+                                            .find({id: req.param("id")})
+                                            .populate('service')
+                                            .populate('product')
+                                            .populate('appt_status');
+                console.log(serviceData);
+                res.view("pages/servicedetail",{data: serviceData});
+            }catch(err){
+
+            }
+        }());
+    },
+    showProduct: function(req,res){
+        (async function(){
+            try{
+
+            }catch(err){
+                
+            }
+        }());
     }
 };
-

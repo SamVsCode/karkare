@@ -27,33 +27,36 @@
 
 }(jQuery));
 
+
 // (function(){
 //     $('.dataTable').dataTable();
 // }());
 
-$(document).ready(function() {
+$(document).ready(function () {
     // Setup - add a text input to each footer cell
-    $('.dataTable tfoot th').each( function () {
+    $('#dataTable tfoot th').each(function () {
         var title = $(this).text();
-        $(this).html( '<input type="text" class="form-control" placeholder='+title+' />' );
-    } );
- 
-    // DataTable
-    var datatable = $('.dataTable').DataTable({
-        "scrollX": true,
+        $(this).html('<input type="text" style="width: 100%" class="form-control" placeholder=' + title + ' />');
     });
- 
+
+    // DataTable
+    var datatable = $('#dataTable').DataTable({
+        "scrollX": true,
+        "columnDefs": [
+            {"width": "20px", "targets":0}
+        ]
+    });
+
     // Apply the search
-    datatable.columns().every( function () {
+    datatable.columns().every(function () {
         var that = this;
- 
-        $( 'input', this.footer() ).on( 'keyup change', function () {
+        $('input', this.footer()).on('keyup change', function () {
             console.log('changing');
-            if ( that.search() !== this.value ) {
+            if (that.search() !== this.value) {
                 that
-                .search( this.value )
-                .draw();
+                    .search(this.value)
+                    .draw();
             }
-        } );
-    } );
-} );
+        });
+    });
+});
