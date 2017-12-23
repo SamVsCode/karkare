@@ -11,13 +11,13 @@ module.exports = {
             if (
                 (req.body.name !== undefined && req.body.name !== "") &&
                 (req.body.phone !== undefined && req.body.phone !== "") &&
-                (req.body.house_num !== undefined && req.body.house_num !== "") &&
+                (req.body.housenum !== undefined && req.body.housenum !== "") &&
                 (req.body.street !== undefined && req.body.street !== "")) {
                 var userObj = {};
                 userObj.name = req.body.name;
                 userObj.phone = req.body.phone;
                 userObj.email = req.body.email;
-                userObj.house_num = req.body.house_num;
+                userObj.house_num = req.body.housenum;
                 userObj.street = req.body.street;
                 userObj.landmark = req.body.landmark;
                 try {
@@ -28,9 +28,9 @@ module.exports = {
                             userService = await UserService.create({
                                 customer: newUser.id,
                                 service: req.body.serviceid,
-                                car_type: 0,
-                                coating_size: 0,
-                                appt_date: 569391138,
+                                car_type: req.body.cartype || null,
+                                coating_size: req.body.coating_size || null,
+                                appt_date: req.body.apptdate,
                                 appt_status: 1
                             }).fetch();
                         }
@@ -38,6 +38,7 @@ module.exports = {
                             userProduct = await UserService.create({
                                 customer: newUser.id,
                                 product: req.body.productid,
+                                appt_date: req.body.apptdate,
                                 appt_status: 1
                             }).fetch();
                         }
