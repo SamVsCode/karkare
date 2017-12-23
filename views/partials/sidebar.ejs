@@ -1,22 +1,22 @@
 <nav class="navbar-default navbar-side" role="navigation">
   <div class="sidebar-collapse">
     <ul class="nav" id="main-menu">
-      <li class="active-link">
+      <li class="<%= (page_name === "dashboard")? 'active-link' : '' %>">
         <a href="index.html">
-          <i class="fa fa-desktop "></i>Dashboard
+          <i class="fa fa-desktop"></i>Dashboard
         </a>
       </li>
-      <li>
+      <li class="<%= (page_name === "product")? 'active-link' : '' %>">
         <a href="ui.html">
           <i class="fa fa-table "></i> Requested Services
         </a>
       </li>
-      <li>
+      <li class="<%= (page_name === "service")? 'active-link' : '' %>">
         <a href="blank.html">
           <i class="fa fa-shopping-cart "></i>Requested Products
         </a>
       </li>
-      <li>
+      <li class="<%= (page_name === "customer")? 'active-link' : '' %>">
         <a href="#">
           <i class="fa fa-pie-chart "></i>Verified Customers
         </a>

@@ -34,8 +34,12 @@ module.exports.datastores = {
 
   default: {
 
-    adapter: 'sails-postgresql',
-    url: process.env.DATABASE_URL,
+    adapter: 'sails-mysql',
+    host: 'localhost',
+    port: 3306,
+    user: 'root', // optional
+    password: 'root', // optional
+    database: 'k3karkare' //optional
 
     /***************************************************************************
     *                                                                          *

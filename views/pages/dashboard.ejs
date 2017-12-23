@@ -25,15 +25,15 @@
                     </tfoot>
                     <tbody>
                         <% for (var i = 0; i < all_users.length; i++) { %>
-                            <tr>
-                                <td class="linkable-item">
+                            <tr class="linkable-item">
+                                <td>
                                     <a href="<%= (all_users[i].service) ? 'appointment/service' : 'appointment/product' %>/<%=all_users[i].id%>" target="_blank"><%=all_users[i].id %></a>
                                 </td>
                                 <td>
-                                    <%=all_users[i].customer.name %>
+                                    <a href="appointment/customer/<%=all_users[i].customer.id%>"><%=all_users[i].customer.name %></a>
                                 </td>
                                 <td>
-                                    <%=all_users[i].customer.phone %>
+                                    <a href="appointment/phone/<%=all_users[i].customer.phone %>"><%=all_users[i].customer.phone %></a>
                                 </td>
                                 <td>
                                     <%= moment.unix(all_users[i].appt_date).format("llll") %>

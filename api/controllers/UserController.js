@@ -25,7 +25,7 @@ module.exports = {
                     let newUser = await User.create(userObj).fetch();
                     let userService, userProduct;
                     if (newUser && newUser.id !== undefined && newUser.id !== "") {
-                        if (req.body.requestType === "service" && req.body.serviceid !== undefined && req.body.serviceid !== "") {
+                        if (req.body.requestType === "service" && req.body.serviceid !== undefined && req.body.serviceid !== "" && req.body.serviceid != "0") {
                             userService = await UserService.create({
                                 customer: newUser.id,
                                 service: req.body.serviceid,
@@ -35,7 +35,7 @@ module.exports = {
                                 appt_status: 1
                             }).fetch();
                         }
-                        if (req.body.requestType === "product" && req.body.productid !== undefined && req.body.productid !== "") {
+                        if (req.body.requestType === "product" && req.body.productid !== undefined && req.body.productid !== "" && req.body.productid != "0") {
                             userProduct = await UserService.create({
                                 customer: newUser.id,
                                 product: req.body.productid,

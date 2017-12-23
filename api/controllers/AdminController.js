@@ -16,7 +16,7 @@ module.exports = {
                 .populate("product")
                 .populate("appt_status");
                 if(!populatedData) return res.notFound();
-                return res.view('pages/dashboard', {all_users: populatedData, moment: moment});
+                return res.view('pages/dashboard', {all_users: populatedData, moment: moment, page_name: "dashboard"});
             }catch(err){
                 console.log(err);
                 return res.serverError(err);
@@ -32,7 +32,7 @@ module.exports = {
                                             .populate('product')
                                             .populate('appt_status');
                 console.log(serviceData);
-                res.view("pages/servicedetail",{data: serviceData});
+                res.view("pages/servicedetail",{data: serviceData, page_name: "dashboard"});
             }catch(err){
 
             }
@@ -44,6 +44,27 @@ module.exports = {
 
             }catch(err){
                 
+            }
+        }());
+    },
+    showCustomer: function(req,res){
+        (async function(){
+            try{
+                var userData = await User.find({id: req.param("id")});
+                console.log(userData);
+                res.view("pages/userprofile",{data: userData, page_name: "dashboard"});                
+            }catch(err){
+                res.serverError(err);
+            }
+        }());
+    },
+    showCustomerAppt: function(req,res){
+        (async function(){
+            try{
+                var allUser = await User.find({phone: req.param("phone")}).populate("services");
+                res.json(allUser);
+            }catch(err){
+                res.serverError(err);
             }
         }());
     }
