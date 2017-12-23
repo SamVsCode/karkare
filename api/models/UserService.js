@@ -7,8 +7,6 @@
 
 module.exports = {
   tableName: 'user_service',
-  autoCreatedAt: false,
-  autoUpdatedAt: false,
   attributes: {
 
     //Primitives

@@ -6,8 +6,6 @@
  */
 
 module.exports = {
-  autoCreatedAt: false,
-  autoUpdatedAt: false,
   attributes: {
     username: {
       type: 'string',

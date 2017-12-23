@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  autoCreatedAt: false,
+autoCreatedAt: false,
   autoUpdatedAt: false,
   attributes: {
     name: {
