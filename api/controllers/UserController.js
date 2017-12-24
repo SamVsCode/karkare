@@ -51,10 +51,10 @@ module.exports = {
                         }
                     }
                 } catch (err) {
-                    return res.serverError(err)
+                    return res.json(err)
                 }
             } else {
-                console.log("naaa");
+                res.json({error: "Bad Parameter"});
             }
         }());
     },
@@ -70,7 +70,7 @@ module.exports = {
                     .populate("appt_status")                    
                 res.json(user);
             } catch (err) {
-                res.serverError(err);
+                res.json(err);
             }
         }());
     },
@@ -80,7 +80,7 @@ module.exports = {
             try {
                 var user = await UserService
                     .find({
-                        customer: req.param("id")
+                        customer: parseInt(req.param("id"),10)
                     })
                     .populate("customer")
                     .populate("service")
@@ -88,7 +88,7 @@ module.exports = {
                     .populate("appt_status")
                 res.json(user);
             } catch (err) {
-                res.serverError(err);
+                res.json(err);
             }
         }());
     }

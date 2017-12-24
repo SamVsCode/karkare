@@ -32,7 +32,7 @@
                                 <%= data.house_num? data.house_num: '' %> <%= data.street? data.street: '' %> <%= data.landmark? ", "+data.landmark: '' %></span></p>                
                     </div>
                 </div>
-                <div class="addition-info-card">
+                <div class="addition-info-card appt-card-<%= (service_data.appt_status && service_data.appt_status.name)? service_data.appt_status.name.toLowerCase(): "" %>">
                     <h3>Appointment Information</h3>
                     <p><i class="fa fa-clock-o"></i><span>Date: </span><%= service_data.appt_date ? moment.unix(service_data.appt_date).format('llll') : '' %></p>
                     <p><i class="fa fa-clock-o"></i><span>Appointment Id: </span><%= service_data.service && service_data.service.id ? service_data.id : '' %></p>
@@ -65,26 +65,35 @@
     
 </div>
 <div class="service-foooter">
-    <div class="col-xs-6 footer-block">
-        <div class="col-xs-8">
-            <span>Appointment Status</span>
-            <select name="" id="" class="form-control">
+    <form action="/appointment-status/update" method="POST">
+        <div class="col-xs-6 footer-block">
+            <div class="col-xs-8">
+                <span>Appointment Status</span>
+                <input type="hidden" name="serviceid" value="<%= service_data.service && service_data.service.id ? service_data.id : '' %>">
+                <select name="apptstatus" class="form-control">
                     <% for(var i=0;i< appt.length;i++){%>
-                        <option value="<%= appt[i].id %>"><%= appt[i].name %></option>    
-                    <%}%>
-            </select>
-        </div>
-        <div class="col-xs-4">
-            <button class="btn btn-success">Update</button>        
-        </div>
-    </div>
-    <div class="col-xs-6 footer-block">
-        <div class="col-xs-8">
-            <span>User Rating</span>            
-            <select name="" id="" class="form-control">
-                    <% for(var i=0;i< appt.length;i++){%>
-                    <option value="<%= appt[i].id %>"><%= appt[i].name %></option>    
+                        <% if(appt[i].id == service_data.appt_status.id){ %>
+                            <option value="<%= appt[i].id %>" selected="selected"><%=appt[i].name %></option>
+                        <%}else{%>
+                            <option value="<%= appt[i].id %>"><%=appt[i].name %></option>                            
+                        <%}%>    
                     <%}%>      
+                </select>
+            </div>
+            <div class="col-xs-4">
+                <button type="submit" class="btn btn-success">Update</button>        
+            </div>
+        </div>
+    </form>
+    <div class="col-xs-6 footer-block">
+        <div class="col-xs-8">
+            <span>User Rating</span>
+            <select name="" id="" class="form-control">
+                <% for(var i=0;i< appt.length;i++){%>
+                    <% if(appt[i].id == service_data.appt_status){ %>
+                        <option value="<%= appt[i].id %>" selected="selected">appt[i].name %></option>
+                    <%}%>    
+                <%}%>      
             </select>
         </div>
         <div class="col-xs-4">

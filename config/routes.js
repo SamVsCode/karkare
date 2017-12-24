@@ -73,5 +73,9 @@ module.exports.routes = {
     controller: 'admin',
     action: 'showAllProducts'
   },
+  'post /appointment-status/update': {
+    controller: 'admin',
+    action: 'updateApptStatus'
+  }
 
 };

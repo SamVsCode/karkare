@@ -43,7 +43,7 @@ $(document).ready(function () {
     var datatable = $('#dataTable').DataTable({
         "scrollX": true,
         "columnDefs": [
-            {"width": "20px", "targets":0}
+            {"width": "50px", "targets":0}
         ],
         buttons: [ 'copy', 'csv', 'excel' ]
     });

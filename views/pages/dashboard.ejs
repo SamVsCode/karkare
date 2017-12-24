@@ -11,7 +11,7 @@
                             <th>name</th>
                             <th>phone</th>
                             <th>Appointment Date</th>
-                            <th>Created At</th>    
+                            <th>Appointment Status</th>    
                         </tr>
                     </thead>
                     <tfoot>
@@ -20,7 +20,7 @@
                             <th>name</th>
                             <th>phone</th>
                             <th>Appointment Date</th>
-                            <th>Created At</th>
+                            <th>Appointment Status</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -40,7 +40,7 @@
                                     <%= moment.unix(all_users[i].appt_date).format("llll") %>
                                 </td>
                                 <td>
-                                    <%= moment(all_users[i].createdAt).format("llll") %>
+                                    <%= (all_users[i].appt_status &&all_users[i].appt_status.name) ? all_users[i].appt_status.name : ""%>
                                 </td>
                             </tr>
                         <%}%>
@@ -50,3 +50,10 @@
             </div>
             <!-- /. PAGE WRAPPER  -->
 </div>
+
+<script>
+    setInterval(function(){
+        console.log('lalla');
+        location = ''
+    },60000)
+</script>

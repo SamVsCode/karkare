@@ -32,7 +32,7 @@ module.exports = {
             try {
                 var serviceData = await UserService
                     .findOne({
-                        id: req.param("id")
+                        id: parseInt(req.param("id"))
                     })
                     .populate('service')
                     .populate('product')
@@ -46,10 +46,10 @@ module.exports = {
                     page_name: "dashboard",
                     moment,
                     appt,
-                    requestType: 'service'                    
+                    requestType: 'service'
                 });
             } catch (err) {
-
+                res.serverError(err);
             }
         }());
     },
@@ -58,7 +58,7 @@ module.exports = {
             try {
                 var serviceData = await UserService
                     .findOne({
-                        id: req.param("id")
+                        id: parseInt(req.param("id"))
                     })
                     .populate('service')
                     .populate('product')
@@ -75,7 +75,7 @@ module.exports = {
                     requestType: 'product'
                 });
             } catch (err) {
-
+                res.serverError(err);
             }
         }());
     },
@@ -83,7 +83,7 @@ module.exports = {
         (async function () {
             try {
                 var userData = await User.findOne({
-                    id: req.param("id")
+                    id: parseInt(req.param("id"),10)
                 });
                 console.log(userData);
                 res.view("pages/userprofile", {
@@ -117,7 +117,7 @@ module.exports = {
                         }
                     },
                     sort: 'appt_date DESC'
-                }).populate('customer').populate('service');
+                }).populate('customer').populate('service').populate('appt_status');
                 return res.view("pages/servicesproducts", {
                     all_users: allServices,
                     moment,
@@ -149,4 +149,19 @@ module.exports = {
             }
         }());
     },
+    updateApptStatus: function (req, res) {
+        (async function () {
+            if(req.body.apptstatus && req.body.serviceid ){
+                try {
+                    var result = await UserService.update({id: req.body.serviceid}, {appt_status: req.body.apptstatus}).fetch();
+                    console.log(result);
+                    return res.redirect('back');
+                } catch (err) {
+                    res.serverError(err);
+                }    
+            }else{
+                return res.badRequest("Invalid values", '/appointment/service/'+req.body.serviceid);
+            }
+        }());
+    }
 };
