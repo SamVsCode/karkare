@@ -326,12 +326,15 @@ body {
     color: #444;
     margin-bottom: 20px;
 }
+.service-card .right-pane p span{
+    white-space: normal!important;
+}
 .custom-badge-green{
     border-radius: 0;
     background-color: #0cac4e;
     padding: 5px 15px;
     font-size: 14px;
-    word-wrap: break-word;
+    white-space: normal;
 }
 .service-card .right-pane p{
     display: flex;
