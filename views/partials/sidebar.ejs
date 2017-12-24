@@ -2,17 +2,17 @@
   <div class="sidebar-collapse">
     <ul class="nav" id="main-menu">
       <li class="<%= (page_name === "dashboard")? 'active-link' : '' %>">
-        <a href="index.html">
+        <a href="/">
           <i class="fa fa-desktop"></i>Dashboard
         </a>
       </li>
-      <li class="<%= (page_name === "product")? 'active-link' : '' %>">
-        <a href="ui.html">
+      <li class="<%= (page_name === "service")? 'active-link' : '' %>">
+        <a href="/dashboard/service">
           <i class="fa fa-table "></i> Requested Services
         </a>
       </li>
-      <li class="<%= (page_name === "service")? 'active-link' : '' %>">
-        <a href="blank.html">
+      <li class="<%= (page_name === "product")? 'active-link' : '' %>">
+        <a href="/dashboard/product">
           <i class="fa fa-shopping-cart "></i>Requested Products
         </a>
       </li>

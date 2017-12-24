@@ -65,5 +65,13 @@ module.exports.routes = {
     controller: 'admin',
     action: 'showCustomerAppt'
   },
+  'get /dashboard/service': {
+    controller: 'admin',
+    action: 'showAllServices'
+  },
+  'get /dashboard/product': {
+    controller: 'admin',
+    action: 'showAllProducts'
+  },
 
 };

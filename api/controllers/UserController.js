@@ -39,7 +39,6 @@ module.exports = {
                             userProduct = await UserService.create({
                                 customer: newUser.id,
                                 product: req.body.productid,
-                                appt_date: req.body.apptdate,
                                 appt_status: 1
                             }).fetch();
                         }

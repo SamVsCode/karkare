@@ -27,19 +27,20 @@
                         <% for (var i = 0; i < all_users.length; i++) { %>
                             <tr class="linkable-item">
                                 <td>
-                                    <a href="<%= (all_users[i].service) ? 'appointment/service' : 'appointment/product' %>/<%=all_users[i].id%>" target="_blank"><%=all_users[i].id %></a>
+                                    <a href="<%= (all_users[i].service) ? 'appointment/service' : 'appointment/product' %>/<%=all_users[i].id%>" target="_blank"><button class="btn btn-primary"> View</button></a>
                                 </td>
                                 <td>
-                                    <a href="appointment/customer/<%=all_users[i].customer.id%>"><%=all_users[i].customer.name %></a>
+                                    <a href="appointment/customer/<%=all_users[i].customer.id%>" target="_blank"><%=all_users[i].customer.name %></a>
                                 </td>
                                 <td>
-                                    <a href="appointment/phone/<%=all_users[i].customer.phone %>"><%=all_users[i].customer.phone %></a>
+                                     <!-- <a href="appointment/phone/<%=all_users[i].customer.phone %>" target="_blank"><%=all_users[i].customer.phone %></a> -->
+                                     <%=all_users[i].customer.phone %>
                                 </td>
                                 <td>
                                     <%= moment.unix(all_users[i].appt_date).format("llll") %>
                                 </td>
                                 <td>
-                                    <%= moment.unix(all_users[i].createdAt).format("llll") %>
+                                    <%= moment(all_users[i].createdAt).format("llll") %>
                                 </td>
                             </tr>
                         <%}%>

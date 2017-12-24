@@ -27,12 +27,21 @@ module.exports = {
         (async function(){
             try{
                 var serviceData = await UserService
-                                            .find({id: req.param("id")})
+                                            .findOne({id: req.param("id")})
                                             .populate('service')
                                             .populate('product')
+                                            .populate('customer')
                                             .populate('appt_status');
-                console.log(serviceData);
-                res.view("pages/servicedetail",{data: serviceData, page_name: "dashboard"});
+                var appt = await AppointmentStatus.find();
+                var userData =  serviceData.customer || {};
+                res.view("pages/servicedetail",
+                {
+                    service_data: serviceData,
+                    data: userData,
+                    page_name: "dashboard",
+                    moment,
+                    appt
+                });
             }catch(err){
 
             }
@@ -50,7 +59,7 @@ module.exports = {
     showCustomer: function(req,res){
         (async function(){
             try{
-                var userData = await User.find({id: req.param("id")});
+                var userData = await User.findOne({id: req.param("id")});
                 console.log(userData);
                 res.view("pages/userprofile",{data: userData, page_name: "dashboard"});                
             }catch(err){
@@ -67,5 +76,35 @@ module.exports = {
                 res.serverError(err);
             }
         }());
-    }
+    },
+    showAllServices: function(req,res){
+        (async function(){
+            try{
+                var allServices = await UserService.find({where: { service: {'!=': null}}, sort: 'appt_date DESC'}).populate('customer').populate('service');
+                return res.view("pages/servicesproducts",
+                {
+                    all_users: allServices,
+                    moment,
+                    page_name: "service"
+                });
+            }catch(err){
+                res.serverError(err);
+            }
+        }());
+    },
+    showAllProducts: function(req,res){
+        (async function(){
+            try{
+                var allServices = await UserService.find({where: { service: {'!=': null}}, sort: 'appt_date DESC'}).populate('customer').populate('service');
+                return res.view("pages/servicesproducts",
+                {
+                    all_users: allServices,
+                    moment,
+                    page_name: "service"
+                });
+            }catch(err){
+                res.serverError(err);
+            }
+        }());
+    },
 };

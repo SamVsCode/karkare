@@ -44,7 +44,8 @@ $(document).ready(function () {
         "scrollX": true,
         "columnDefs": [
             {"width": "20px", "targets":0}
-        ]
+        ],
+        buttons: [ 'copy', 'csv', 'excel' ]
     });
 
     // Apply the search
