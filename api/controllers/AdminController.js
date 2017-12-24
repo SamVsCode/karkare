@@ -10,7 +10,7 @@ module.exports = {
         (async function () {
             try {
                 var populatedData = await UserService
-                    .find({sort: 'appt_date DESC'})
+                    .find({sort: 'createdAt DESC'})
                     .populate("customer")
                     .populate("service")
                     .populate("product")
