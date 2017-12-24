@@ -1,3 +1,6 @@
+<% if (requestType === "service") {%>
+
+
 <div id="wrapper">
     <%- partial('./../partials/header.ejs') %>
     <%- partial('./../partials/sidebar.ejs') %>
@@ -89,3 +92,58 @@
         </div>
     </div>
 </div>
+<%}%>
+
+
+<% if (requestType === "product") {%>
+
+<div id="wrapper">
+    <%- partial('./../partials/header.ejs') %>
+    <%- partial('./../partials/sidebar.ejs') %>
+    <div id="page-wrapper">
+        <div class="service-detail-header">
+                <div class="service-card">
+                    <div class="card left-pane">
+                        <div class="display-wrapper">
+                            <!-- <img src="/images/service/car_wash.png" alt="Car Wash"> -->
+                            <span>P</span>
+                        </div>
+                    </div>
+                    <div class="card right-pane">
+                        <h3><%= service_data.product && service_data.product.name ? service_data.product.name : "" %></h3>
+                        <p><i class="fa fa-map-marker">
+                            </i> <span class="badge custom-badge-green">
+                                <%= data.house_num? data.house_num: '' %> <%= data.street? data.street: '' %> <%= data.landmark? ", "+data.landmark: '' %></span></p>                
+                    </div>
+                </div>
+                <div class="addition-info-card">
+                    <h3>Appointment Information</h3>
+                    <p><i class="fa fa-clock-o"></i><span>Appointment Id: </span><%= service_data && service_data.id ? service_data.id : '' %></p>
+                </div>
+        </div>
+        
+        <div class="profile-wrapper">
+            <div class="user-image-wrapper">
+                <div class="default-profile">
+                    <img src="/images/user_avatar.svg" alt="">    
+                </div>
+                <h4><%= data.name? data.name: '' %></h4>
+                <p><%= data.email? data.email: '' %></p>
+            </div>
+            <div class="contact-detail">
+                <div>
+                    <h5>Contact Number</h5>
+                    <div><p><%= data.phone? data.phone: '' %></p></div>
+                </div>
+            </div>
+            <div class="address-detail">
+                <h3>Address Details</h3>
+                <p> <i class="fa fa-building"></i> <span><%= data.house_num? data.house_num: '' %></span></p>
+                <p> <i class="fa fa-road"></i> <span><%= data.street? data.street: '' %></span></p>         
+                <p> <i class="fa fa-language"></i> <span><%= data.landmark? data.landmark: '' %></span></p>                         
+            </div>
+        </div>       
+    </div>
+    
+</div>
+<%}%>
