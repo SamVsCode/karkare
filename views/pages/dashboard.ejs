@@ -27,10 +27,10 @@
                         <% for (var i = 0; i < all_users.length; i++) { %>
                             <tr class="linkable-item">
                                 <td>
-                                    <a href="<%= (all_users[i].service) ? 'appointment/service' : 'appointment/product' %>/<%=all_users[i].id%>" target="_blank"><button class="btn btn-primary"> View</button></a>
+                                    <a href="<%= (all_users[i].service && all_users[i].service.id) ? 'appointment/service' : 'appointment/product' %>/<%=all_users[i].id%>" target="_blank"><button class="btn btn-primary"> View</button></a>
                                 </td>
                                 <td>
-                                    <a href="appointment/customer/<%=all_users[i].customer.id%>" target="_blank"><%=all_users[i].customer.name %></a>
+                                    <a href="appointment/customer/<%=(all_users[i].customer && all_users[i].customer.id)%>" target="_blank"><%=all_users[i].customer.name %></a>
                                 </td>
                                 <td>
                                      <!-- <a href="appointment/phone/<%=all_users[i].customer.phone %>" target="_blank"><%=all_users[i].customer.phone %></a> -->

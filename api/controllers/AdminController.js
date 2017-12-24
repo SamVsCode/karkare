@@ -50,7 +50,7 @@ module.exports = {
     showProduct: function(req,res){
         (async function(){
             try{
-
+                res.json({info: 'product yet to be created!!'});
             }catch(err){
                 
             }
