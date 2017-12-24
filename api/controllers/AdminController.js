@@ -142,7 +142,7 @@ module.exports = {
                 return res.view("pages/servicesproducts", {
                     all_users: allServices,
                     moment,
-                    page_name: "service"
+                    page_name: "product"
                 });
             } catch (err) {
                 res.serverError(err);
