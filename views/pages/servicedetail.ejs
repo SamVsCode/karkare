@@ -32,7 +32,7 @@
                 <div class="addition-info-card">
                     <h3>Appointment Information</h3>
                     <p><i class="fa fa-clock-o"></i><span>Date: </span><%= service_data.appt_date ? moment.unix(service_data.appt_date).format('llll') : '' %></p>
-                    <p><i class="fa fa-clock-o"></i><span>Appointment Id: </span><%= service_data.service && service_data.service.id ? service_data.service.id : '' %></p>
+                    <p><i class="fa fa-clock-o"></i><span>Appointment Id: </span><%= service_data.service && service_data.service.id ? service_data.id : '' %></p>
                     <p><i class="fa fa-clock-o"></i><span>Status: </span><%= service_data.appt_status && service_data.appt_status.name ? service_data.appt_status.name : '' %></p>                    
                 </div>
         </div>
