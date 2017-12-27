@@ -37,10 +37,14 @@
                                      <%=all_users[i].customer.phone %>
                                 </td>
                                 <td>
-                                    <%= moment.unix(all_users[i].appt_date).format("llll") %>
+                                    <% if (all_users[i].service && all_users[i].service.id) {%>
+                                        <%= moment.unix(all_users[i].appt_date).format("llll") %>
+                                    <% }%>
                                 </td>
                                 <td>
-                                    <%= (all_users[i].appt_status &&all_users[i].appt_status.name) ? all_users[i].appt_status.name : ""%>
+                                    <% if (all_users[i].service && all_users[i].service.id) {%>
+                                        <%= (all_users[i].appt_status &&all_users[i].appt_status.name) ? all_users[i].appt_status.name : ""%>
+                                    <%}%>
                                 </td>
                             </tr>
                         <%}%>
