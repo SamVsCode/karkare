@@ -173,6 +173,7 @@ body {
     border: 1px solid #dfddde;
     box-shadow: 1px 1px 3px #eee, -1px -1px 3px #eee;
     padding: 30px;
+    position: relative;
 }
 .default-profile{
     display: flex;
@@ -421,4 +422,19 @@ body {
 }
 .appt-card-cancelled{
     background-color: #fbabab;    
+}
+.star-rate{
+    font-size: 40px!important;
+    margin-right: 15px;
+    display: inline-block;
+    color: #ffd700;
+}
+.user-rate{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+.user-rate{
+    font-size: 30px;
+    color: #a78b04;
 }

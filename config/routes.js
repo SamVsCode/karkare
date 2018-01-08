@@ -80,6 +80,10 @@ module.exports.routes = {
   'post /user-feedback/update':{
     controller: 'admin',
     action: 'updateUserFeedback'
+  },
+  'get /verified-customer': {
+    controller: 'admin',
+    action: 'verifiedCustomer'
   }
 
 };

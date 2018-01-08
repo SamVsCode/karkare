@@ -176,5 +176,22 @@ module.exports = {
                 }
             }
         }());
+    },
+    verifiedCustomer: function(req,res){
+        (async function(){
+            try{
+                var allUser = await User.find({ 'feedback': { '!=': 0 } })
+                .populate("services")
+                .populate("products");
+                console.log(allUser);
+                res.view('pages/verifiedcustomer',{
+                    all_users: allUser,
+                    moment: moment,
+                    page_name: "verified"
+                })
+            }catch(err){
+                res.serverError(err);
+            }
+        }());
     }
 };

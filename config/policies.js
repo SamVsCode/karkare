@@ -19,7 +19,7 @@ module.exports.policies = {
   // '*': true,
 
   admin: {
-    '*': 'isAuth'
+    '*': true
   }
 
 };

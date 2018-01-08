@@ -29,7 +29,8 @@ module.exports = {
       required: true
     },
     feedback: {
-      type: "number"
+      type: "number",
+      defaultsTo: 0
     },
     landmark: {
       type: 'string'

@@ -1,0 +1,57 @@
+<div id="wrapper">
+        <%- partial('./../partials/header.ejs') %>
+            <!-- /. NAV TOP  -->
+            <%- partial('./../partials/sidebar.ejs') %>
+                <!-- /. NAV SIDE  -->
+                <div id="page-wrapper">
+                    <input type="date" name="" id="min">
+                    <input type="date" name="" id="max">
+                    <table id="dataTable" class="table table-striped table-bordered wrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>name</th>
+                                <th>phone</th>
+                                <th>User Rating</th>                                
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>name</th>
+                                <th>phone</th>
+                                <th>User Rating</th>                                
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <% for (var i = 0; i < all_users.length; i++) { %>
+                                <tr class="linkable-item">
+                                        <td>
+                                                <a href="<%= (all_users[i].service && all_users[i].service.id) ? 'appointment/service' : 'appointment/product' %>/<%=all_users[i].id%>" target="_blank"><button class="btn btn-primary"> View</button></a>
+                                            </td>
+                                            <td>
+                                                <a href="appointment/customer/<%=(all_users[i] && all_users[i].id)%>" target="_blank"><%=all_users[i].name %></a>
+                                            </td>
+                                    <td>
+                                         <%=all_users[i].phone %>
+                                    </td>
+                                    <td>
+                                            <% if(all_users[i].feedback) { %> 
+                                                <%= all_users[i].feedback%>
+                                            <%}%>
+                                        </td>
+                                </tr>
+                            <%}%>
+    
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /. PAGE WRAPPER  -->
+    </div>
+    
+    <script>
+        setInterval(function(){
+            console.log('lalla');
+            location = ''
+        },60000)
+    </script>

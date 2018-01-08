@@ -3,9 +3,10 @@
     <%- partial('./../partials/sidebar.ejs') %>
     <div id="page-wrapper">
         <div class="profile-wrapper">
+            <div class="user-rate"><i class="fa fa-star star-rate"></i><span><%= data.feedback? data.feedback: "Not Rated" %></span></div>
             <div class="user-image-wrapper">
                 <div class="default-profile">
-                    <img src="/images/user_avatar.svg" alt="">    
+                    <img src="/images/user_avatar.svg" alt="">
                 </div>
                 <h4><%= data.name? data.name: '' %></h4>
                 <p><%= data.email? data.email: '' %></p>
