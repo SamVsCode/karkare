@@ -76,6 +76,10 @@ module.exports.routes = {
   'post /appointment-status/update': {
     controller: 'admin',
     action: 'updateApptStatus'
+  },
+  'post /user-feedback/update':{
+    controller: 'admin',
+    action: 'updateUserFeedback'
   }
 
 };

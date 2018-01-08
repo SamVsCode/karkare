@@ -163,5 +163,18 @@ module.exports = {
                 return res.badRequest("Invalid values", '/appointment/service/'+req.body.serviceid);
             }
         }());
+    },
+    updateUserFeedback: function(req,res){
+        (async function(){
+            if(req.body.feedback && req.body.userid){
+                try{
+                    var result = await User.update({id: req.body.userid}, {feedback: req.body.feedback}).fetch();
+                    console.log(result);
+                    return res.redirect('back');
+                }catch(err){
+                    res.serverError(err);
+                }
+            }
+        }());
     }
 };

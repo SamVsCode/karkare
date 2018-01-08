@@ -70,6 +70,15 @@ module.exports.bootstrap = async function (done) {
     );
     console.log("seed: created the admin credentials");
   }
+  if(await AppointmentStatus.count()>0){
+    console.log("Appointment Status already created");
+  }else{
+    await AppointmentStatus.createEach([{"createdAt":1514112749,"updatedAt":1514112749,"id":1,"name":"New"},       
+    {"createdAt":1514130453,"updatedAt":1514130453,"id":2,"name":"Processing"},
+    {"createdAt":1514130453,"updatedAt":1514130453,"id":3,"name":"Finished"},  
+    {"createdAt":1514130453,"updatedAt":1514130453,"id":4,"name":"Cancelled"}]);
+    console.log("seed: created all appointment statuses");
+  }
   return done();
 
 };

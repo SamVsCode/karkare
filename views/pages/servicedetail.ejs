@@ -19,7 +19,7 @@
                             <i class="fa fa-car"></i> 
                             <% if((typeof service_data.car_type!=="undefined") && service_data.car_type != -1){%>
                                 <span class="badge custom-badge-green">
-                                    <%= (service_data.car_type == 0) ? "Sedan": "Hetchback" %>
+                                    <%= (service_data.car_type == 0) ? "Sedan": "Hatchback" %>
                                 </span>
                             <%} else if((typeof service_data.coating_size!=="undefined") && service_data.coating_size != -1){%>
                                 <span class="badge custom-badge-green">
@@ -85,21 +85,23 @@
             </div>
         </div>
     </form>
-    <div class="col-xs-6 footer-block">
+    <form action="/user-feedback/update" method="POST">
+        <div class="col-xs-6 footer-block">
         <div class="col-xs-8">
             <span>User Rating</span>
-            <select name="" id="" class="form-control">
-                <% for(var i=0;i< appt.length;i++){%>
-                    <% if(appt[i].id == service_data.appt_status){ %>
-                        <option value="<%= appt[i].id %>" selected="selected">appt[i].name %></option>
-                    <%}%>    
-                <%}%>      
-            </select>
+                <input type="hidden" name="userid" value="<%= data.id %>">                
+                <select name="feedback" id="" class="form-control" <%= (service_data.appt_status.id != 3)? 'disabled': '' %> >
+                    <option value="0">Select Rating</option>
+                    <% for(var i=0;i<5;i++) {%>
+                        <option value="<%= i%>" <%= (data.feedback === i)? "selected" : "" %> ><%= i%></option>
+                    <% } %>
+                </select>
         </div>
         <div class="col-xs-4">
-            <button class="btn btn-success">Update</button>        
+            <button type="submit" class="btn btn-success">Update</button>        
         </div>
-    </div>
+</div>
+</form>
 </div>
 <%}%>
 

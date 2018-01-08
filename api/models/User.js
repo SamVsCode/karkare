@@ -28,6 +28,9 @@ module.exports = {
       type: 'string',
       required: true
     },
+    feedback: {
+      type: "number"
+    },
     landmark: {
       type: 'string'
     },
