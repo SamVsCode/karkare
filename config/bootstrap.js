@@ -33,8 +33,8 @@ module.exports.bootstrap = async function (done) {
   if (await Service.count() > 0) {
     console.log("Services are already in db");
   } else {
-    await Service.createEach([{ "createdAt": 1514124380, "updatedAt": 1514124380, "id": 1, "name": "Normal Car Wash" },
-    { "createdAt": 1514124380, "updatedAt": 1514124380, "id": 2, "name": "Platinum Car Wash" },
+    await Service.createEach([{ "createdAt": 1514124380, "updatedAt": 1514124380, "id": 1, "name": "Normal Steam Wash" },
+    { "createdAt": 1514124380, "updatedAt": 1514124380, "id": 2, "name": "Platinum Steam Wash" },
     { "createdAt": 1514124380, "updatedAt": 1514124380, "id": 3, "name": "Platinum ECI" },
     { "createdAt": 1514124380, "updatedAt": 1514124380, "id": 4, "name": "Gold ECI" },
     { "createdAt": 1514124380, "updatedAt": 1514124380, "id": 5, "name": "Platinum Organic Coating" },
